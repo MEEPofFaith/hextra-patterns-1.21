@@ -145,9 +145,9 @@
         true_eval: "Casts a pattern or list of patterns like $(l:patterns/meta#hexcasting:eval)$(action)Hermes' Gambit/$ if the next iota from the top of the stack is $(l:patterns/logic#hexcasting:bool_coerce)$(thing)considered $(action)True $(thing)by Nature/$.",
         false_eval: "Casts a pattern or list of patterns like $(l:patterns/meta#hexcasting:eval)$(action)Hermes' Gambit/$ if the next iota from the top of the stack is $(l:patterns/logic#hexcasting:bool_coerce)$(thing)considered $(action)False $(thing)by Nature/$.",
         null_eval: "If the first argument is not $(l:casting/influences)$(thing)Null/$, returns it. Otherwise, executes the second argument, much like $(l:patterns/meta#hexcasting:eval)$(action)Hermes' Gambit/$.",
-        indexed_for_each: "A family of patterns that casts like $(l:patterns/meta#hexcasting:for_each)$(action)Thoth's Gambit/$, however for each sub-stack the index of the data is pushed also pushed.",
-        stack_for_each: "Casts similarly to $(l:patterns/meta#hexcasting:for_each)$(action)Thoth's Gambit/$, however it does not operate on sub-stacks. Rather, everything occurs on the original stack.",
-        stack_indexed_for_each: "Casts similarly to $(l:patterns/hextrapats_meta#hextrapats:indexed_for_each)$(action)Djehuty's Gambit/$, however it does not operate on sub-stacks. Rather, everything occurs on the original stack."
+        indexed_for_each: "A family of patterns similar to $(l:patterns/meta#hexcasting:for_each)$(action)Thoth's Gambit/$. Additionally pushes the data value's index after pushing the value onto each sub-stack.",
+        stack_for_each: "Pops an evaluatable iota and a data list, then casts the evaluatable over each element of the first list. Unlike $(l:patterns/meta#hexcasting:for_each)$(action)Thoth's Gambit/$, everything is performed on the main stack and no list is created at the end. For each data value, it will simply push the value, then cast the evaluatable iota.",
+        stack_indexed_for_each: "Like $(l:patterns/hextrapats_meta#hextrapats:stack_for_each)$(action)Anubis' Gambit/$, but also pushes the data value's index after pushing each value onto the stack."
       },
       stackmanip: {
         capsizing: "Sends the iota on the top of the stack to the bottom of the stack.",
