@@ -12,9 +12,13 @@ plugins {
 
 val modVersion: String by project
 val minecraftVersion: String by project
+val previewVersion: String by project
 val mavenGroup: String by project
 
-version = "$modVersion+$minecraftVersion"
+var ver = "$modVersion+$minecraftVersion"
+if(!previewVersion.isEmpty()) ver += "-devel-pre-$previewVersion"
+version = ver
+
 group = mavenGroup
 
 kotlin {
