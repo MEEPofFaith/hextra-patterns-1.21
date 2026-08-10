@@ -19,8 +19,8 @@ requires-python = ">=3.12"
 dynamic = ["version", "dependencies", "optional-dependencies"]
 
 [project.urls]
-Homepage = "https://meepoffaith.github.io/hextra-patterns"
-Source = "https://github.com/MEEPofFaith/hextra-patterns"
+Homepage = "https://meepoffaith.github.io/hextra-patterns-1.21"
+Source = "https://github.com/MEEPofFaith/hextra-patterns-1.21"
 
 # project version
 

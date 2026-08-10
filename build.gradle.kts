@@ -88,9 +88,9 @@ cloche {
         license = "MIT"
 
         author("MEEPofFaith")
-        url = "https://meepoffaith.github.io/hextra-patterns"
-        sources = "https://github.com/MEEPofFaith/hextra-patterns"
-        issues = "https://github.com/MEEPofFaith/hextra-patterns/issues"
+        url = "https://meepoffaith.github.io/hextra-patterns-1.21"
+        sources = "https://github.com/MEEPofFaith/hextra-patterns-1.21"
+        issues = "https://github.com/MEEPofFaith/hextra-patterns-1.21/issues"
     }
 
     common {

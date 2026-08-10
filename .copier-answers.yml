@@ -5,10 +5,10 @@ _src_path: gh:Master-Bw3/Hex-Casting-1.21.1-Addon-Template
 advanced: false
 description: Random pattern ideas that come to my head. Mostly utility.
 display_name: Hextra Patterns
-github_repo: hextra-patterns
+github_repo: hextra-patterns-1.21
 github_user: MEEPofFaith
 java_package: com.meepoffaith.hextrapats
 minecraft_version_in_mod_version: true
 mit_license: true
-mod_version: 1.8.1
+mod_version: 1.9.0
 modid: hextrapats

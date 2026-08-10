@@ -32,9 +32,9 @@ source .venv/bin/activate  # everything else
 For local testing, create a file called `.env` in the repo root following this template:
 
 ```sh
-GITHUB_REPOSITORY=MEEPofFaith/hextra-patterns
+GITHUB_REPOSITORY=MEEPofFaith/hextra-patterns-1.21
 GITHUB_SHA=main
-GITHUB_PAGES_URL=https://meepoffaith.github.io/hextra-patterns
+GITHUB_PAGES_URL=https://meepoffaith.github.io/hextra-patterns-1.21
 ```
 
 Useful commands:
