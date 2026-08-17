@@ -3,6 +3,7 @@ package com.meepoffaith.hextrapats.casting.iota
 import at.petrak.hexcasting.api.casting.iota.*
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import com.meepoffaith.hextrapats.util.MathUtils
+import com.meepoffaith.hextrapats.util.MathUtils.roundToTolerance
 
 class IotaSet : HashSet<Iota> {
     constructor(): super()
@@ -59,10 +60,10 @@ class IotaSet : HashSet<Iota> {
 
         fun coerceIota(iota: Iota): Iota{
             // There's probably a better option than hardcoding this.
-            // Do something to make it easier for other addons to add their own iotas to this.
+            // TODO: Do something to make it easier for other addons to add their own iotas to this.
             return when(iota){
-                is DoubleIota -> DoubleIota(MathUtils.roundToTolerance(iota.double))
-                is Vec3Iota -> Vec3Iota(MathUtils.roundToTolerance(iota.vec3))
+                is DoubleIota -> DoubleIota(iota.double.roundToTolerance())
+                is Vec3Iota -> Vec3Iota(iota.vec3.roundToTolerance())
                 else -> iota
             }
         }
