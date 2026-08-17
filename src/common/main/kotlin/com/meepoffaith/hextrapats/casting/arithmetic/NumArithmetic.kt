@@ -19,9 +19,13 @@ import com.meepoffaith.hextrapats.registry.HextraActions.APPROACH
 import com.meepoffaith.hextrapats.registry.HextraActions.DECREMENT
 import com.meepoffaith.hextrapats.registry.HextraActions.INCREMENT
 import com.meepoffaith.hextrapats.registry.HextraActions.INVERT
+import com.meepoffaith.hextrapats.registry.HextraActions.ROUND_EXACT
+import com.meepoffaith.hextrapats.registry.HextraActions.ROUND_INT
 import com.meepoffaith.hextrapats.util.MathUtils
+import com.meepoffaith.hextrapats.util.MathUtils.roundToInterval
 import java.util.function.DoubleBinaryOperator
 import java.util.function.DoubleUnaryOperator
+import kotlin.math.roundToLong
 
 
 object NumArithmetic : Arithmetic {
@@ -31,7 +35,9 @@ object NumArithmetic : Arithmetic {
         DECREMENT,
         APPROACH,
         ANGLE_DIST,
-        ANGLE_APPROACH
+        ANGLE_APPROACH,
+        ROUND_INT,
+        ROUND_EXACT
     );
 
     override fun arithName() = "hextrapats_double_math"
@@ -45,6 +51,8 @@ object NumArithmetic : Arithmetic {
         APPROACH -> OperatorApproach
         ANGLE_DIST -> make2{ a, b -> MathUtils.angleDist(a, b) }
         ANGLE_APPROACH -> OperatorTurn
+        ROUND_INT -> make1{ d -> d.roundToLong().toDouble() }
+        ROUND_EXACT -> make2{ a, b -> a.roundToInterval(b) }
         else -> throw InvalidOperatorException("$pattern is not a valid operator in Arithmetic $this.")
     }
 

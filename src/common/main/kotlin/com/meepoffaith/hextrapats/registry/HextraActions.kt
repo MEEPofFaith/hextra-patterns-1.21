@@ -24,6 +24,11 @@ import com.meepoffaith.hextrapats.casting.actions.nullary.OpNullExecute
 import com.meepoffaith.hextrapats.casting.actions.sets.*
 import com.meepoffaith.hextrapats.casting.actions.stack.OpFloat
 import com.meepoffaith.hextrapats.casting.actions.stack.OpSink
+import com.meepoffaith.hextrapats.casting.actions.vecmanip.OpVecLeftShift
+import com.meepoffaith.hextrapats.casting.actions.vecmanip.OpVecRightShift
+import com.meepoffaith.hextrapats.casting.actions.vecmanip.OpVecSwapXY
+import com.meepoffaith.hextrapats.casting.actions.vecmanip.OpVecSwapXZ
+import com.meepoffaith.hextrapats.casting.actions.vecmanip.OpVecSwapYZ
 import com.meepoffaith.hextrapats.casting.actions.vecmath.*
 import net.minecraft.world.phys.Vec3
 
@@ -56,6 +61,8 @@ object HextraActions : HextrapatsRegistrar<ActionRegistryEntry>(
     val VEC_SET_X = makeArithOp("vec/set/x", HexDir.EAST, "eqqqqqawwa")
     val VEC_SET_Y = makeArithOp("vec/set/y", HexDir.EAST, "eqqqqqawww")
     val VEC_SET_Z = makeArithOp("vec/set/z", HexDir.EAST, "eqqqqqawwd")
+    val ROUND_INT = makeArithOp("round/int", HexDir.EAST, "qdwae")
+    val ROUND_EXACT = makeArithOp("round/exact", HexDir.EAST, "eawdq")
 
     val DEG_TO_RAD = make("deg_to_rad", HexDir.WEST, "qqqqqdwdq", OpDegRad)
     val RAD_TO_DEG = make("rad_to_deg", HexDir.NORTH_EAST, "qdwdqqqqq", OpRadDeg)
@@ -109,6 +116,12 @@ object HextraActions : HextrapatsRegistrar<ActionRegistryEntry>(
     val SINK_IOTA_COPY = make("capsizing/copy", HexDir.EAST, "aadaqe", OpSink(true))
     val FLOAT_IOTA = make("dredging", HexDir.WEST, "ddadaq", OpFloat(false))
     val FLOAT_IOTA_COPY = make("dredging/copy", HexDir.EAST, "aadade", OpFloat(true))
+
+    val VEC_SWAP_XY = make("vec/swap/xy", HexDir.NORTH_WEST, "eeeqaawede", OpVecSwapXY)
+    val VEC_SWAP_YZ = make("vec/swap/yz", HexDir.WEST, "eeeeqaawdd", OpVecSwapYZ)
+    val VEC_SWAP_XZ = make("vec/swap/xz", HexDir.NORTH_WEST, "eeeaddwqaq", OpVecSwapXZ)
+    val VEC_SHIFT_LEFT = make("vec/shift/left", HexDir.WEST, "eeeeqaaeaa", OpVecLeftShift)
+    val VEC_SHIFT_RIGHT = make("vec/shift/right", HexDir.WEST, "eeeeaddqdd", OpVecRightShift)
 
     private fun make(name: String, startDir: HexDir, signature: String, action: Action) =
         make(name, startDir, signature) { action }

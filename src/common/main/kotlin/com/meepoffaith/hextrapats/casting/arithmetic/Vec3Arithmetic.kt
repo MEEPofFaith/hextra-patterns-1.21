@@ -26,6 +26,8 @@ import com.meepoffaith.hextrapats.registry.HextraActions.NORMALIZE
 import com.meepoffaith.hextrapats.registry.HextraActions.ROT_ABOUT_X
 import com.meepoffaith.hextrapats.registry.HextraActions.ROT_ABOUT_Y
 import com.meepoffaith.hextrapats.registry.HextraActions.ROT_ABOUT_Z
+import com.meepoffaith.hextrapats.registry.HextraActions.ROUND_EXACT
+import com.meepoffaith.hextrapats.registry.HextraActions.ROUND_INT
 import com.meepoffaith.hextrapats.registry.HextraActions.VEC_GET_X
 import com.meepoffaith.hextrapats.registry.HextraActions.VEC_GET_Y
 import com.meepoffaith.hextrapats.registry.HextraActions.VEC_GET_Z
@@ -33,6 +35,8 @@ import com.meepoffaith.hextrapats.registry.HextraActions.VEC_SET_X
 import com.meepoffaith.hextrapats.registry.HextraActions.VEC_SET_Y
 import com.meepoffaith.hextrapats.registry.HextraActions.VEC_SET_Z
 import com.meepoffaith.hextrapats.util.MathUtils
+import com.meepoffaith.hextrapats.util.MathUtils.round
+import com.meepoffaith.hextrapats.util.MathUtils.roundToInterval
 import com.meepoffaith.hextrapats.util.MultiPreds
 import net.minecraft.world.phys.Vec3
 import java.util.function.BiFunction
@@ -61,7 +65,9 @@ object Vec3Arithmetic : Arithmetic {
         VEC_GET_Z,
         VEC_SET_X,
         VEC_SET_Y,
-        VEC_SET_Z
+        VEC_SET_Z,
+        ROUND_INT,
+        ROUND_EXACT
     )
 
     override fun arithName() = "hextrapats_vec3_math"
@@ -108,6 +114,8 @@ object Vec3Arithmetic : Arithmetic {
         VEC_SET_X -> makeVecNumToVec{ v, x -> Vec3(x, v.y, v.z) }
         VEC_SET_Y -> makeVecNumToVec{ v, y -> Vec3(v.x, y, v.z) }
         VEC_SET_Z -> makeVecNumToVec{ v, z -> Vec3(v.x, v.y, z) }
+        ROUND_INT -> makeVecToVec{ v -> v.round() }
+        ROUND_EXACT -> makeVecNumToVec{ v, n -> v.roundToInterval(n) }
         else -> throw InvalidOperatorException("$pattern is not a valid operator in Arithmetic $this.")
     }
 
