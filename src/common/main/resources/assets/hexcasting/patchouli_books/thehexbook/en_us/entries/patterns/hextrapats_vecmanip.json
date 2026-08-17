@@ -1,0 +1,91 @@
+{
+  "name": "pages.hextrapats.hextrapats_vecmanip.title",
+  "category": "hexcasting:patterns",
+  "icon": "minecraft:spectral_arrow",
+  "sortnum": 2,
+  "advancement": "hexcasting:root",
+  "read_by_default": true,
+  "pages": [
+
+    {
+      "type": "hexcasting:manual_pattern",
+      "op_id": "hextrapats:vec/get/x",
+      "anchor": "hextrapats:vec/get/x",
+      "input": "vec",
+      "output": "num",
+      "text": "hextrapats.page.vecmanip.get",
+      "patterns": [
+        {
+          "startdir": "EAST",
+          "signature": "qeeeeedwwa"
+        }, {
+          "startdir": "EAST",
+          "signature": "qeeeeedwww"
+        }, {
+          "startdir": "EAST",
+          "signature": "qeeeeedwwd"
+        }
+      ]
+    },
+    {
+      "type": "hexcasting:manual_pattern",
+      "op_id": "hextrapats:vec/set/x",
+      "anchor": "hextrapats:vec/set/x",
+      "input": "vec, num",
+      "output": "vec",
+      "text": "hextrapats.page.vecmanip.set",
+      "patterns": [
+        {
+          "startdir": "EAST",
+          "signature": "eqqqqqawwa"
+        }, {
+          "startdir": "EAST",
+          "signature": "eqqqqqawww"
+        }, {
+          "startdir": "EAST",
+          "signature": "eqqqqqawwd"
+        }
+      ]
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hextrapats:vec/swap/xy",
+      "anchor": "hextrapats:vec/swap/xy",
+      "input": "vec",
+      "output": "vec",
+      "text": "hextrapats.page.vecmanip.swap/xy"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hextrapats:vec/swap/yz",
+      "anchor": "hextrapats:vec/swap/yz",
+      "input": "vec",
+      "output": "vec",
+      "text": "hextrapats.page.vecmanip.swap/yz"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hextrapats:vec/swap/xz",
+      "anchor": "hextrapats:vec/swap/xz",
+      "input": "vec",
+      "output": "vec",
+      "text": "hextrapats.page.vecmanip.swap/xz"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hextrapats:vec/shift/left",
+      "anchor": "hextrapats:vec/shift/left",
+      "input": "vec",
+      "output": "vec",
+      "text": "hextrapats.page.vecmanip.shift/left"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hextrapats:vec/shift/right",
+      "anchor": "hextrapats:vec/shift/right",
+      "input": "vec",
+      "output": "vec",
+      "text": "hextrapats.page.vecmanip.shift/right"
+    }
+  ]
+}
