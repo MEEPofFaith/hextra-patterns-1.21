@@ -1,4 +1,4 @@
-package com.meepoffaith.hextrapats.casting.actions.vecmath
+package com.meepoffaith.hextrapats.casting.actions.vecmanip
 
 import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction

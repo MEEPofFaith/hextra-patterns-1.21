@@ -16,6 +16,8 @@ object HextraSpecialHandlers : HextrapatsRegistrar<SpecialHandler.Factory<*>>(
     val VEC_1 = make("vec_1", SpecialHandlerVector1.Factory())
     val SCI_EXP = make("scientific_exp", SpecialHandlerScientificExponent.Factory())
     val INDEXED_FOR_EACH = make("indexed_for_each", SpecialHandlerIndexedForEach.Factory())
+    val DUPLICATE_AT = make("duplicate_at", SpecialHandlerDuplicateAt.Factory())
+    val VEC_SWIZZLE = make("vec/swizzle", SpecialHandlerVecSwizzling.Factory())
 
     private fun make(name: String, handler: SpecialHandler.Factory<*>): SpecialHandler.Factory<*> {
         register(name) { handler }

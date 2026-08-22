@@ -25,6 +25,7 @@ import com.meepoffaith.hextrapats.casting.actions.sets.*
 import com.meepoffaith.hextrapats.casting.actions.stack.OpFloat
 import com.meepoffaith.hextrapats.casting.actions.stack.OpSink
 import com.meepoffaith.hextrapats.casting.actions.vecmanip.OpVecLeftShift
+import com.meepoffaith.hextrapats.casting.actions.vecmanip.OpVecList
 import com.meepoffaith.hextrapats.casting.actions.vecmanip.OpVecRightShift
 import com.meepoffaith.hextrapats.casting.actions.vecmanip.OpVecSwapXY
 import com.meepoffaith.hextrapats.casting.actions.vecmanip.OpVecSwapXZ
@@ -116,12 +117,6 @@ object HextraActions : HextrapatsRegistrar<ActionRegistryEntry>(
     val SINK_IOTA_COPY = make("capsizing/copy", HexDir.EAST, "aadaqe", OpSink(true))
     val FLOAT_IOTA = make("dredging", HexDir.WEST, "ddadaq", OpFloat(false))
     val FLOAT_IOTA_COPY = make("dredging/copy", HexDir.EAST, "aadade", OpFloat(true))
-
-    val VEC_SWAP_XY = make("vec/swap/xy", HexDir.NORTH_WEST, "eeeqaawede", OpVecSwapXY)
-    val VEC_SWAP_YZ = make("vec/swap/yz", HexDir.WEST, "eeeeqaawdd", OpVecSwapYZ)
-    val VEC_SWAP_XZ = make("vec/swap/xz", HexDir.NORTH_WEST, "eeeaddwqaq", OpVecSwapXZ)
-    val VEC_SHIFT_LEFT = make("vec/shift/left", HexDir.WEST, "eeeeqaaeaa", OpVecLeftShift)
-    val VEC_SHIFT_RIGHT = make("vec/shift/right", HexDir.WEST, "eeeeaddqdd", OpVecRightShift)
 
     private fun make(name: String, startDir: HexDir, signature: String, action: Action) =
         make(name, startDir, signature) { action }
