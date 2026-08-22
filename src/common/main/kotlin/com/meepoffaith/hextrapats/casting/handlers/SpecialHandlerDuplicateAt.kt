@@ -8,17 +8,18 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.asTranslatedComponent
 import at.petrak.hexcasting.api.utils.lightPurple
-import com.meepoffaith.hextrapats.init.SpecialHandlers
+import com.meepoffaith.hextrapats.registry.HextraSpecialHandlers
 import com.meepoffaith.hextrapats.util.HextraUtils
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 
 class SpecialHandlerDuplicateAt(val depth: Int) : SpecialHandler {
     override fun act(): Action{
         return InnerAction(depth)
     }
 
-    override fun getName(): Text{
-        return HextraUtils.specialHandlerLang(SpecialHandlers.DUPLICATE_AT).asTranslatedComponent(depth).lightPurple
+    override fun getName(): Component{
+        return HextraUtils.specialHandlerLang(HextraSpecialHandlers.DUPLICATE_AT)
+            .asTranslatedComponent(depth).lightPurple
     }
 
     class InnerAction(depth: Int) : ConstMediaAction {

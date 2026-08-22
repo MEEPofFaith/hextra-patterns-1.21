@@ -11,18 +11,18 @@ import at.petrak.hexcasting.api.casting.math.HexAngle
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.asTranslatedComponent
 import at.petrak.hexcasting.api.utils.lightPurple
-import com.meepoffaith.hextrapats.init.SpecialHandlers
+import com.meepoffaith.hextrapats.registry.HextraSpecialHandlers
 import com.meepoffaith.hextrapats.util.HextraUtils
-import net.minecraft.text.Text
-import net.minecraft.util.math.Vec3d
+import net.minecraft.network.chat.Component
+import net.minecraft.world.phys.Vec3
 
 class SpecialHandlerVecSwizzling(val swizzle: Int) : SpecialHandler{
     override fun act(): Action{
         return InnerAction(swizzle)
     }
 
-    override fun getName(): Text{
-        return HextraUtils.specialHandlerLang(SpecialHandlers.VEC_SWIZZLE)
+    override fun getName(): Component{
+        return HextraUtils.specialHandlerLang(HextraSpecialHandlers.VEC_SWIZZLE)
             .asTranslatedComponent(
                 getChar(swizzle shr 4),
                 getChar(swizzle shr 2),
@@ -44,10 +44,10 @@ class SpecialHandlerVecSwizzling(val swizzle: Int) : SpecialHandler{
             val x = getComponent(vec, swizzle shr 4)
             val y = getComponent(vec, swizzle shr 2)
             val z = getComponent(vec, swizzle)
-            return Vec3d(x, y, z).asActionResult
+            return Vec3(x, y, z).asActionResult
         }
 
-        fun getComponent(vec: Vec3d, bits: Int): Double = when(bits and 0b11){
+        fun getComponent(vec: Vec3, bits: Int): Double = when(bits and 0b11){
             0b00 -> vec.x
             0b01 -> vec.y
             0b10 -> vec.z
