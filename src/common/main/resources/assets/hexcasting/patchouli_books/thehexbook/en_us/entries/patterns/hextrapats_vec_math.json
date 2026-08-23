@@ -137,14 +137,6 @@
       "input": "num",
       "output": "vec",
       "text": "hextrapats.page.vec_math.cons_about/z"
-    },
-    {
-      "type": "hexcasting:pattern",
-      "op_id": "hextrapats:swap_vec_list",
-      "anchor": "hextrapats:swap_vec_list",
-      "input": "[num] | vec",
-      "output": "vec | [num]",
-      "text": "hextrapats.page.vec_math.swap_vec_list"
     }
   ]
 }

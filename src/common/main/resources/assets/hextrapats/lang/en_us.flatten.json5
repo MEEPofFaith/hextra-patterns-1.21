@@ -97,20 +97,15 @@
           x: "Converts an angle in radians to a unit vector where X=0. +Z at 0 radians and +Y at pi/4 radians.",
           y: "Converts an angle in radians to a unit vector where Y=0. +Z at 0 radians and -X at pi/4 radians. I've seen some texts related to this pattern mentioning something called $(thing)F3/$, but I couldn't figure out what that means.",
           z: "Converts an angle in radians to a unit vector where Z=0. -X at 0 radians and +Y at pi/4 radians."
-        },
-        swap_vec_list: "Converts a list of 3 numbers to a vector, or a vector into a list of 3 numbers."
+        }
       },
       vecmanip: {
         get: "Returns the X, Y, or Z component of a vector.",
         set: "Overrides a vector's X, Y, or Z component.",
-        "swap/": {
-          xy: "Swaps the X and Y components of a vector.",
-          yz: "Swaps the Y and Z components of a vector.",
-          xz: "Swaps the X and Z components of a vector."
-        },
-        "shift/": {
-          right: "Shifts a vector's components to the right. That is to say, (X, Y, Z) becomes (Z, X, Y).",
-          left: "Shifts a vector's components to the left. That is to say, (X, Y, Z) becomes (Y, Z, X)."
+        swap_vec_list: "Converts a list of 3 numbers to a vector, or a vector into a list of 3 numbers.",
+        "swizzle": {
+          "": "A family of patterns that \"swizzles\" a vector's components based on the 3 sections of its tail.",
+          details: "A leftward point represents X, a straight line is Y, and a rightward point is Z.$(br2)The first pattern encodes ZXY;<br>(1, 2, 3) becomes (3, 1, 2)$(br2)The second pattern encodes YXX;<br>(1, 2, 3) becomes (2, 1, 1)$(br2)The third pattern encodes YYY;<br>(1, 2, 3) becomes (2, 2, 2)$(br2)The fourth pattern encodes ZZX;<br>(1, 2, 3) becomes (3, 3, 1)"
         }
       },
       lists: {
@@ -169,7 +164,11 @@
         capsizing: "Sends the iota on the top of the stack to the bottom of the stack.",
         "capsizing/copy": "Like $(l:patterns/hextrapats_stackmanip#hextrapats:capsizing)$(action)Capsizing Gambit/$, but copies the iota instead of moving it.",
         dredging: "Pulls the iota at the bottom of the stack to the top of the stack.",
-        "dredging/copy": "Like $(l:patterns/hextrapats_stackmanip#hextrapats:dredging)$(action)Dredging Gambit/$, but copies the iota instead of moving it."
+        "dredging/copy": "Like $(l:patterns/hextrapats_stackmanip#hextrapats:dredging)$(action)Dredging Gambit/$, but copies the iota instead of moving it.",
+        duplicate_at: {
+          "": "A family of patterns that takes the Nth iota from the top of the stack, determined by the length of the head, and duplicates it in place. The copy will be created right above the original iota.",
+          details: "The first pattern is identical to $(l:patterns/stackmanip#hexcasting:duplicate)$(action)Gemini Decomposition/$.$(br2)The second pattern, with a head length of 1, duplicates the first iota from the top. [1, 0] becomes [1, 1, 0].$(br2)The third pattern follows this. [2, 1, 0] becomes [2, 2, 1, 0]."
+        }
       }
     }
   },
@@ -218,6 +217,10 @@
           z: "Roll Purification"
         },
         "vec/": {
+          x: "Vector Reflection X II",
+          y: "Vector Reflection Y II",
+          z: "Vector Reflection Z II",
+          "1": "Vector Reflection 1 II",
           "get/": {
             x: "Coordinate Purification: X",
             y: "Coordinate Purification: Y",
@@ -228,15 +231,7 @@
             y: "Coordinate Distillation: Y",
             z: "Coordinate Distillation: Z"
           },
-          "swap/": {
-            xy: "Swapping Purification: XY",
-            yz: "Swapping Purification: YZ",
-            xz: "Swapping Purification: XZ"
-          },
-          "shift/": {
-            left: "Shifting Purification",
-            right: "Shifting Purification II"
-          }
+          swizzle: "Swizzling Purification"
         },
         "round/": {
           int: "Rounding Purification",
@@ -290,7 +285,8 @@
         capsizing: "Capsizing Gambit",
         "capsizing/copy": "Capsizing Gambit II",
         dredging: "Dredging Gambit",
-        "dredging/copy": "Dredging Gambit II"
+        "dredging/copy": "Dredging Gambit II",
+        duplicate_at: "Angler's Gambit"
       },
 
       "book.hextrapats:": {
@@ -305,6 +301,10 @@
         vec_1: "Vector Rfln. 1 II",
 
         "vec/": {
+          x: "Vector Rfln. X II",
+          y: "Vector Rfln. Y II",
+          z: "Vector Rfln. Z II",
+          "1": "Vector Rfln. 1 II",
           "get/x": "Coordinate Purif.: X/Y/Z",
           "set/x": "Coordinate Dstl.: X/Y/Z",
         },
@@ -331,12 +331,16 @@
       }
     },
     "special.hextrapats:": {
-      vec_x: "Vector Reflection: (%s, 0, 0)",
-      vec_y: "Vector Reflection: (0, %s, 0)",
-      vec_z: "Vector Reflection: (0, 0, %s)",
-      vec_1: "Vector Reflection: (%s, %s, %s)",
+      "vec/": {
+        x: "Vector Reflection: (%s, 0, 0)",
+        y: "Vector Reflection: (0, %s, 0)",
+        z: "Vector Reflection: (0, 0, %s)",
+        "1": "Vector Reflection: (%s, %s, %s)",
+        swizzle: "Swizzling Purification: %s%s%s"
+      },
       scientific_exp: "Scientific Purification: 10^%s",
       indexed_for_each: "Djehuty's Gambit: %s",
+      duplicate_at: "Angler's Gambit: %s"
     },
     "iota.hextrapats:": {
       set: {
