@@ -37,6 +37,32 @@
       "input": "any",
       "output": "any",
       "text": "hextrapats.page.stackmanip.dredging/copy"
+    },
+    {
+      "type": "hexcasting:manual_pattern",
+      "op_id": "hextrapats:duplicate_at",
+      "anchor": "hextrapats:duplicate_at",
+      "input": "many",
+      "output": "many",
+      "text": "hextrapats.page.stackmanip.duplicate_at",
+      "patterns": [
+        {
+          "startdir": "WEST",
+          "signature": "wddad"
+        },
+        {
+          "startdir": "WEST",
+          "signature": "wwddad"
+        },
+        {
+          "startdir": "WEST",
+          "signature": "wwwddad"
+        }
+      ]
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hextrapats.page.stackmanip.duplicate_at.details"
     }
   ]
 }
