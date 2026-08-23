@@ -2,7 +2,6 @@ package com.meepoffaith.hextrapats.casting.iota
 
 import at.petrak.hexcasting.api.casting.iota.*
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
-import com.meepoffaith.hextrapats.util.MathUtils
 import com.meepoffaith.hextrapats.util.MathUtils.roundToTolerance
 
 class IotaSet : HashSet<Iota> {
