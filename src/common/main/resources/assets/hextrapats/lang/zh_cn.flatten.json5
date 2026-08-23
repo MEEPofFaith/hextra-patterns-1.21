@@ -321,6 +321,7 @@
       },
       scientific_exp: "科学记数之纯化：10^%s",
       indexed_for_each: "杰胡提之策略：%s",
+      duplicate_at: "渔夫之策略：%s",
     },
     "iota.hextrapats:": {
       num_set: {
