@@ -176,6 +176,7 @@ cloche {
         runs {
             client {
                 jvmArguments.add("-XX:+AllowEnhancedClassRedefinition")
+                args("--username", "MEEPofFaith")
             }
             server()
             data()
@@ -224,6 +225,7 @@ cloche {
         runs {
             client {
                 jvmArguments.add("-XX:+AllowEnhancedClassRedefinition")
+                args("--username", "MEEPofFaith")
             }
             server()
             data()
