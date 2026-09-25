@@ -10,7 +10,6 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidOperatorArgs
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.common.lib.hex.HexArithmetics
-import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 
 class NoConsOperationAction(val pattern: HexPattern, val argc: Int) : Action {
     override fun operate(
