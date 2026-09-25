@@ -27,8 +27,10 @@ class NoConsOperationAction(val pattern: HexPattern, val argc: Int) : Action {
         try{
             val result = HexArithmetics.getEngine().run(pattern, env, image, continuation)
             val resultStack = result.newImage.stack
-            oldStack.addAll(resultStack.subList(size - argc, resultStack.size))
-            return OperationResult(image.copy(stack = oldStack), result.sideEffects, continuation, HexEvalSounds.NORMAL_EXECUTE.get())
+            return OperationResult(
+                result.newImage.copy(stack = oldStack.appendedAll(resultStack.slice(size - argc, resultStack.size))),
+                result.sideEffects, result.newContinuation, result.sound
+            )
         } catch (e: NoOperatorCandidatesException) {
             throw MishapInvalidOperatorArgs(e.args)
         }
