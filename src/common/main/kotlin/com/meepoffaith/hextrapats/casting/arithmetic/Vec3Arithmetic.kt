@@ -31,6 +31,7 @@ import com.meepoffaith.hextrapats.registry.HextraActions.ROUND_INT
 import com.meepoffaith.hextrapats.registry.HextraActions.VEC_GET_X
 import com.meepoffaith.hextrapats.registry.HextraActions.VEC_GET_Y
 import com.meepoffaith.hextrapats.registry.HextraActions.VEC_GET_Z
+import com.meepoffaith.hextrapats.registry.HextraActions.VEC_LEN
 import com.meepoffaith.hextrapats.registry.HextraActions.VEC_SET_X
 import com.meepoffaith.hextrapats.registry.HextraActions.VEC_SET_Y
 import com.meepoffaith.hextrapats.registry.HextraActions.VEC_SET_Z
@@ -66,6 +67,7 @@ object Vec3Arithmetic : Arithmetic {
         VEC_SET_X,
         VEC_SET_Y,
         VEC_SET_Z,
+        VEC_LEN,
         ROUND_INT,
         ROUND_EXACT
     )
@@ -114,6 +116,10 @@ object Vec3Arithmetic : Arithmetic {
         VEC_SET_X -> makeVecNumToVec{ v, x -> Vec3(x, v.y, v.z) }
         VEC_SET_Y -> makeVecNumToVec{ v, y -> Vec3(v.x, y, v.z) }
         VEC_SET_Z -> makeVecNumToVec{ v, z -> Vec3(v.x, v.y, z) }
+        VEC_LEN -> makeVecNumToVec{ v, l ->
+            val len = v.length()
+            if (DoubleIota.tolerates(len, 0.0)) v else v.scale(l / len)
+        }
         ROUND_INT -> makeVecToVec{ v -> v.round() }
         ROUND_EXACT -> makeVecNumToVec{ v, n -> v.roundToInterval(n) }
         else -> throw InvalidOperatorException("$pattern is not a valid operator in Arithmetic $this.")

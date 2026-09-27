@@ -62,6 +62,7 @@ object HextraActions : HextrapatsRegistrar<ActionRegistryEntry>(
     val VEC_SET_X = makeArithOp("vec/set/x", HexDir.EAST, "eqqqqqawwa")
     val VEC_SET_Y = makeArithOp("vec/set/y", HexDir.EAST, "eqqqqqawww")
     val VEC_SET_Z = makeArithOp("vec/set/z", HexDir.EAST, "eqqqqqawwd")
+    val VEC_LEN = makeArithOp("vec/set/len", HexDir.EAST, "qqqqqawqaqw")
     val ROUND_INT = makeArithOp("round/int", HexDir.EAST, "qdwae")
     val ROUND_EXACT = makeArithOp("round/exact", HexDir.EAST, "eawdq")
 
