@@ -14,7 +14,7 @@ object OpEntityBodyYaw : ConstMediaAction {
         val e = args.getEntity(env.world, 0, argc)
         env.assertEntityInRange(e)
 
-        val yaw = Math.toRadians(e.yRot.toDouble()).mod(TAU)
+        val yaw = Math.toRadians(e.visualRotationYInDegrees.toDouble()).mod(TAU)
         return (if (yaw > PI) yaw - TAU else yaw).asActionResult
     }
 }
