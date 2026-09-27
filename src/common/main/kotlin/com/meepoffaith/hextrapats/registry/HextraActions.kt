@@ -21,6 +21,9 @@ import com.meepoffaith.hextrapats.casting.actions.math.OpRadDeg
 import com.meepoffaith.hextrapats.casting.actions.math.OpRandRange
 import com.meepoffaith.hextrapats.casting.actions.math.OpRandZero
 import com.meepoffaith.hextrapats.casting.actions.nullary.OpNullExecute
+import com.meepoffaith.hextrapats.casting.actions.queryentity.OpEntityBodyYaw
+import com.meepoffaith.hextrapats.casting.actions.queryentity.OpEntityLookPitch
+import com.meepoffaith.hextrapats.casting.actions.queryentity.OpEntityLookYaw
 import com.meepoffaith.hextrapats.casting.actions.raycast.OpOutlineAxisRaycast
 import com.meepoffaith.hextrapats.casting.actions.raycast.OpOutlineRaycast
 import com.meepoffaith.hextrapats.casting.actions.sets.*
@@ -121,6 +124,9 @@ object HextraActions : HextrapatsRegistrar<ActionRegistryEntry>(
 
     val RAYCAST_OULINE = make("raycast/outline", HexDir.EAST, "wqaaeaa", OpOutlineRaycast)
     val RAYCAST_OULINE_AXIS = make("raycast/outaxis", HexDir.EAST, "weddqdd", OpOutlineAxisRaycast)
+    val ENTITY_LOOK_YAW = make("entity/look.yaw", HexDir.EAST, "waa", OpEntityLookYaw)
+    val ENTITY_LOOK_PITCH = make("entity/look.pitch", HexDir.EAST, "wdd", OpEntityLookPitch)
+    val ENTITY_BODY_YAW = make("entity/body.yaw", HexDir.EAST, "waaqa", OpEntityBodyYaw)
 
     private fun make(name: String, startDir: HexDir, signature: String, action: Action) =
         make(name, startDir, signature) { action }

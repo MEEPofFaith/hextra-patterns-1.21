@@ -103,8 +103,8 @@
           "": "Rotates the first vector towards the direction of the second vector by the given number of radians. Mishaps if the two directions are directly opposite to each other.",
           examples: "For example:$(li)(1, 0, 0), (0, 1, 0), pi/4$(br)   \u2192 (0.71, 0.71, 0)$(li)(2, 0, 0), (0, 5, 0), pi/4$(br)   \u2192 (1.41, 1.41, 0)$(li)(1, 1, 1), (0, 5, 5), pi/6$(br)   \u2192 (0.16, 1.22, 1.22)"
         },
-        from_polar: "Creates a unit vector from two polar angles, pitch and yaw, in radians. +Y is up. 0 yaw is +Z, pi/2 yaw is -X. Yet again, mentions of $(thing)F3/$ turn up.",
-        to_polar: "Converts a vector's direction into two polar angles, pitch and yaw, in radians. +Y is up. 0 yaw is +Z, pi/2 yaw is -X. Yet again, mentions of $(thing)F3/$ turn up.",
+        from_polar: "Creates a unit vector from two polar angles, pitch and yaw, in radians. +Y is up. 0 yaw is +Z, pi/2 yaw is -X. Yet again, mentions of $(l:patterns/hextrapats_basics#hextrapats:entity/look.yaw)$(action)F3/$ turn up.",
+        to_polar: "Converts a vector's direction into two polar angles, pitch and yaw, in radians. +Y is up. 0 yaw is +Z, pi/2 yaw is -X. Yet again, mentions of $(l:patterns/hextrapats_basics#hextrapats:entity/look.yaw)$(action)F3/$ turn up.",
         "rot_about/": {
           x: "Rotates the vector by the given angle in radians around the X axis.",
           y: "Rotates the vector by the given angle in radians around the Y axis.",
@@ -112,7 +112,7 @@
         },
         "cons_about/": {
           x: "Converts an angle in radians to a unit vector where X=0. +Z at 0 radians and +Y at pi/4 radians.",
-          y: "Converts an angle in radians to a unit vector where Y=0. +Z at 0 radians and -X at pi/4 radians. I've seen some texts related to this pattern mentioning something called $(thing)F3/$, but I couldn't figure out what that means.",
+          y: "Converts an angle in radians to a unit vector where Y=0. +Z at 0 radians and -X at pi/4 radians. Yet again, mentions of $(l:patterns/hextrapats_basics#hextrapats:entity/look.yaw)$(action)F3/$ turn up.",
           z: "Converts an angle in radians to a unit vector where Z=0. -X at 0 radians and +Y at pi/4 radians."
         }
       },

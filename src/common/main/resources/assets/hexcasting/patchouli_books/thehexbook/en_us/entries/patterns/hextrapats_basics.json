@@ -21,6 +21,30 @@
       "input": "vec, vec",
       "output": "vec | null",
       "text": "hextrapats.page.basic.raycast/outaxis"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hextrapats:entity/look.yaw",
+      "anchor": "hextrapats:entity/look.yaw",
+      "input": "entity",
+      "output": "number",
+      "text": "hextrapats.page.basic.entity/look.yaw"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hextrapats:entity/look.pitch",
+      "anchor": "hextrapats:entity/look.pitch",
+      "input": "entity",
+      "output": "number",
+      "text": "hextrapats.page.basic.entity/look.pitch"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "hextrapats:entity/body.yaw",
+      "anchor": "hextrapats:entity/body.yaw",
+      "input": "entity",
+      "output": "number",
+      "text": "hextrapats.page.basic.entity/body.yaw"
     }
   ]
 }
