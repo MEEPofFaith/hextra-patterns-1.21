@@ -34,7 +34,7 @@ show_landing_text = false
 [extra.hexcasting]
 # regexes for parsing pattern registry files - if some or all of your patterns aren't being detected by hexdoc, this may need to be updated
 # NOTE: "!Raw" means "don't apply variable interpolation to this value"
-_pattern_regex = { "!Raw"='(make|makeArithOp|makeNoCons)\(\s*"(?P<name>[a-zA-Z0-9_/]+)"\s*,\s*HexDir\.(?P<startdir>\w+)\s*,\s*"(?P<signature>[aqweds]+)"\s*(,\s*(?P<action>\w+))?' }
+_pattern_regex = { "!Raw"='(make|makeArithOp|makeNoCons)\(\s*"(?P<name>[^"]+)"\s*,\s*HexDir\.(?P<startdir>\w+)\s*,\s*"(?P<signature>[aqweds]+)"\s*(,\s*(?P<action>\w+))?' }
 
 [[extra.hexcasting.pattern_stubs]]
 path = "{$_common.src}/main/kotlin/com/meepoffaith/hextrapats/registry/HextraActions.kt"
