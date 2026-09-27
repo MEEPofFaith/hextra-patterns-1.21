@@ -49,6 +49,8 @@ object HextraActions : HextrapatsRegistrar<ActionRegistryEntry>(
     val NORMALIZE = makeArithOp("normalize", HexDir.SOUTH_WEST, "eeeeedww")
     val LEN_EQ = makeArithOp("len_eq", HexDir.EAST, "adqqaqw")
     val LEN_NEQ = makeArithOp("len_neq", HexDir.EAST, "daeedew")
+    val MIN = makeArithOp("min", HexDir.SOUTH_WEST, "wqw")
+    val MAX = makeArithOp("max", HexDir.SOUTH_EAST, "wew")
     val IN_RANGE = makeArithOp("in_range", HexDir.SOUTH_WEST, "qqqq")
     val OUT_RANGE = makeArithOp("out_range", HexDir.SOUTH_EAST, "eaae")
     val INVERT = makeArithOp("invert", HexDir.SOUTH_WEST, "waqawqa")

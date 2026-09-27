@@ -22,6 +22,8 @@ import com.meepoffaith.hextrapats.registry.HextraActions.CONSTRUCT_ABOUT_Z
 import com.meepoffaith.hextrapats.registry.HextraActions.DECREMENT
 import com.meepoffaith.hextrapats.registry.HextraActions.INCREMENT
 import com.meepoffaith.hextrapats.registry.HextraActions.INVERT
+import com.meepoffaith.hextrapats.registry.HextraActions.MAX
+import com.meepoffaith.hextrapats.registry.HextraActions.MIN
 import com.meepoffaith.hextrapats.registry.HextraActions.NORMALIZE
 import com.meepoffaith.hextrapats.registry.HextraActions.ROT_ABOUT_X
 import com.meepoffaith.hextrapats.registry.HextraActions.ROT_ABOUT_Y
@@ -58,6 +60,8 @@ object Vec3Arithmetic : Arithmetic {
         INVERT,
         INCREMENT,
         DECREMENT,
+        MIN,
+        MAX,
         APPROACH,
         ANGLE_DIST,
         ANGLE_APPROACH,
@@ -107,6 +111,8 @@ object Vec3Arithmetic : Arithmetic {
             val len = v.length()
             if (DoubleIota.tolerates(len, 0.0)) v else v.scale((len - 1) / len)
         }
+        MIN -> makeVecVecToVec{ a, b -> if(b.lengthSqr() < a.lengthSqr()) b else a }
+        MAX -> makeVecVecToVec{ a, b -> if(b.lengthSqr() > a.lengthSqr()) b else a }
         APPROACH -> OperatorApproachVec
         ANGLE_DIST -> makeVecVecToNum{ v1, v2 -> MathUtils.vecAngleDist(v1, v2) }
         ANGLE_APPROACH -> OperatorTurnVec
@@ -139,4 +145,7 @@ object Vec3Arithmetic : Arithmetic {
 
     fun makeVecVecToNum(op: BiFunction<Vec3, Vec3, Double>) = OperatorBinary(MultiPreds.all(VEC3.get()))
         { i: Iota, j: Iota -> DoubleIota(op.apply(Operator.downcast(i, VEC3.get()).vec3, Operator.downcast(j, VEC3.get()).vec3)) }
+
+    fun makeVecVecToVec(op: BiFunction<Vec3, Vec3, Vec3>) = OperatorBinary(MultiPreds.all(VEC3.get()))
+    { i: Iota, j: Iota -> Vec3Iota(op.apply(Operator.downcast(i, VEC3.get()).vec3, Operator.downcast(j, VEC3.get()).vec3)) }
 }

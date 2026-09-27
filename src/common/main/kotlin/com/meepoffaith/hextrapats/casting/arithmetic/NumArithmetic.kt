@@ -19,6 +19,8 @@ import com.meepoffaith.hextrapats.registry.HextraActions.APPROACH
 import com.meepoffaith.hextrapats.registry.HextraActions.DECREMENT
 import com.meepoffaith.hextrapats.registry.HextraActions.INCREMENT
 import com.meepoffaith.hextrapats.registry.HextraActions.INVERT
+import com.meepoffaith.hextrapats.registry.HextraActions.MAX
+import com.meepoffaith.hextrapats.registry.HextraActions.MIN
 import com.meepoffaith.hextrapats.registry.HextraActions.ROUND_EXACT
 import com.meepoffaith.hextrapats.registry.HextraActions.ROUND_INT
 import com.meepoffaith.hextrapats.util.MathUtils
@@ -33,6 +35,8 @@ object NumArithmetic : Arithmetic {
         INVERT,
         INCREMENT,
         DECREMENT,
+        MIN,
+        MAX,
         APPROACH,
         ANGLE_DIST,
         ANGLE_APPROACH,
@@ -48,6 +52,8 @@ object NumArithmetic : Arithmetic {
         INVERT -> make1{ d -> -d }
         INCREMENT -> make1{ d -> d + 1 }
         DECREMENT -> make1{ d -> d - 1 }
+        MIN -> make2{ a, b -> a.coerceAtMost(b) }
+        MAX -> make2{ a, b -> a.coerceAtLeast(b) }
         APPROACH -> OperatorApproach
         ANGLE_DIST -> make2{ a, b -> MathUtils.angleDist(a, b) }
         ANGLE_APPROACH -> OperatorTurn

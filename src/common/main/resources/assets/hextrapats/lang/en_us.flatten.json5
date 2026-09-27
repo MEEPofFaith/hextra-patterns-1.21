@@ -76,6 +76,8 @@
         invert: "Multiplies the number/vector by -1.",
         increment: "Adds 1.",
         decrement: "Subtracts by 1.",
+        min: "If given two numbers, returns the lesser one. If given two vectors, returns the shorter one.",
+        max: "If given two numbers, returns the greater one. If given two vectors, returns the longer one.",
         "round/": {
           int: "Rounds a number to the nearest integer. If passed a vector, rounds each of its components instead.",
           exact: "Rounds a number to the nearest multiple of the second number. If passed a vector, rounds each of its components instead."
@@ -225,6 +227,8 @@
         invert: "Reflection Purification",
         increment: "Incrementation Purification",
         decrement: "Decrementation Purification",
+        min: "Min Distillation",
+        max: "Max Distillation",
         rand_zero: "Entropy Purification",
         rand_range: "Entropy Distillation",
         scientific_exp: "Scientific Purification",
