@@ -1,5 +1,6 @@
 {
   "pages.hextrapats":{
+    "hextrapats_basics.title": "Hextra Basic Patterns",
     "hextrapats_consts.title": "Hextra Constants",
     "hextrapats_logic.title": "Hextra Logic",
     "hextrapats_nocon.title": "Non-consuming Logic",
@@ -17,6 +18,21 @@
     page: {
       consts: {
         one: "The left-hand counter-clockwise pattern adds (1, 1, 1) to the stack; the right-hand clockwise pattern adds (-1, -1, -1)."
+      },
+      basic: {
+        "raycast/": {
+          outline: "Like $(l:patterns/basics#hexcasting:raycast)$(action)Archer's Distillation/$, but is able to hit collisionless blocks like tall grass. Costs a negligible amount of _media.",
+          outaxis: "Like $(l:patterns/basics#hexcasting:raycast/axis)$(action)Architect's Distillation/$, but is able to hit collisionless blocks like tall grass. Costs a negligible amount of _media."
+        },
+        "entity/": {
+          look: {
+            yaw: "Transforms an entity on the stack into the yaw of its looking direction in radians. I've seen some texts mention something called $(thing)F3/$. Seems like north is pi, south is 0, east is -pi/2, and west is pi/2",
+            pitch: "Transforms an entity on the stack into the pitch of its looking direction in radians. Upwards is pi/2, downwards is -pi/2"
+          },
+          body: {
+            yaw: "Transforms an entity on the stack into the yaw of its body in radians. Yet again, mentions of $(l:patterns/hextrapats_basics#hextrapats:entity/look.yaw)$(action)F3/$ turn up."
+          }
+        }
       },
       logic: {
         greater: "If the first vector is longer than the second, return True. Otherwise, return False.",
@@ -75,7 +91,8 @@
         }
       },
       vec_math: {
-        normalize: "Sets the length of the vector to one.",
+        normalize: "Sets the length of the vector to one. Does nothing if the vector is (0, 0, 0).",
+        set_length: "Sets the length of a vector. Does nothing if the vector is (0, 0, 0).",
         increment: "Increases length by 1. Does nothing if the vector is (0, 0, 0).",
         decrement: "Decreases length by 1. Does nothing if the vector is (0, 0, 0).",
         rand_vec: "Returns a unit vector facing a random direction.",
@@ -178,6 +195,20 @@
         haha_ha_one: "Vector Reflection +1",
         eno_ah_ahah: "Vector Reflection -1",
 
+        "raycast/": {
+          outline: "Archer's Distillation II",
+          outaxis: "Architect's Distillation II"
+        },
+        "entity/": {
+          look: {
+            yaw: "Sextant Purification",
+            pitch: "Sextant Purification II"
+          },
+          body: {
+            yaw: "Sextant Purification III"
+          }
+        },
+
         len_eq: "Length Equality Distillation",
         len_neq: "Length Inequality Distillation",
 
@@ -229,7 +260,8 @@
           "set/": {
             x: "Coordinate Distillation: X",
             y: "Coordinate Distillation: Y",
-            z: "Coordinate Distillation: Z"
+            z: "Coordinate Distillation: Z",
+            len: "Length Distillation"
           },
           swizzle: "Swizzling Purification"
         },
