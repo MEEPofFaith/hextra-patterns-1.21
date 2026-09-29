@@ -28,9 +28,8 @@ class SpecialHandlerMaskForEach(val mask: BooleanList) : SpecialHandler {
     }
 
     override fun getName(): Component {
-        val fingerprint = mask.map { if(it) '<' else '-' }.joinToString("")
         return HextraUtils.specialHandlerLang(HextraSpecialHandlers.MASK_FOR_EACH)
-            .asTranslatedComponent(fingerprint).lightPurple
+            .asTranslatedComponent(fingerprint(mask)).lightPurple
     }
 
     class InnerAction(val mask: BooleanList) : Action {
@@ -98,6 +97,8 @@ class SpecialHandlerMaskForEach(val mask: BooleanList) : SpecialHandler {
 
             return mask
         }
+
+        fun fingerprint(mask: BooleanList) : String = mask.map { if(it) '<' else '-' }.joinToString("")
     }
 
     class Factory : SpecialHandler.Factory<SpecialHandlerMaskForEach> {

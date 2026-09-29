@@ -15,7 +15,6 @@ import at.petrak.hexcasting.api.utils.TreeList
 import at.petrak.hexcasting.api.utils.asTranslatedComponent
 import at.petrak.hexcasting.api.utils.lightPurple
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
-import com.meepoffaith.hextrapats.casting.actions.eval.SpecialHandlerMaskForEach.Companion.createMask
 import com.meepoffaith.hextrapats.casting.eval.vm.FrameIndexedForEach
 import com.meepoffaith.hextrapats.registry.HextraSpecialHandlers
 import com.meepoffaith.hextrapats.util.HextraUtils
@@ -28,9 +27,8 @@ class SpecialHandlerIndexedForEach(val mask: BooleanList) : SpecialHandler {
     }
 
     override fun getName(): Component {
-        val fingerprint = mask.map { if(it) '<' else '-' }.joinToString("")
         return HextraUtils.specialHandlerLang(HextraSpecialHandlers.INDEXED_FOR_EACH)
-            .asTranslatedComponent(fingerprint).lightPurple
+            .asTranslatedComponent(SpecialHandlerMaskForEach.fingerprint(mask)).lightPurple
     }
 
     class InnerAction(val mask: BooleanList) : Action {
@@ -73,7 +71,7 @@ class SpecialHandlerIndexedForEach(val mask: BooleanList) : SpecialHandler {
 
     class Factory : SpecialHandler.Factory<SpecialHandlerIndexedForEach> {
         override fun tryMatch(pat: HexPattern, env: CastingEnvironment): SpecialHandlerIndexedForEach? {
-            val mask = createMask(PREFIX, pat) ?: return null
+            val mask = SpecialHandlerMaskForEach.createMask(PREFIX, pat) ?: return null
 
             return SpecialHandlerIndexedForEach(mask)
         }
