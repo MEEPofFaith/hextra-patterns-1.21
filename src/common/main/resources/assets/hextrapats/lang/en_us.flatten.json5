@@ -58,7 +58,6 @@
         z: "A head that sharply bends to the right will output a vector along the $(l:patterns/consts#hexcasting:const/vec/z)$(action)Z axis/$.",
         "1": "A head that slightly bends to the left will output a vector where $(l:patterns/hextrapats_consts#hextrapats:haha_ha_one)$(action)all 3 components are the same/$.",
         detail: "First, I draw one of the eight shapes shown on the prior pages. Next, the $(italic)angles/$ following will modify a running count starting at 0.$(li)Forward: Add 1$(li)Left: Add 5$(li)Right: Add 10$(li)Sharp Left: Multiply by 2$(li)Sharp Right: Divide by 2.$(br)The clockwise version of the pattern, on the right of the other pages, will negate the value at the very end. (The left-hand counter-clockwise version keeps the number positive).$(p)Once I finish drawing, a vector's pushed to the top of the stack.",
-
         example: {
           "x10.header": "Example 1",
           "x10": "This pattern pushes (10, 0, 0).",
@@ -175,7 +174,10 @@
         true_eval: "Casts a pattern or list of patterns like $(l:patterns/meta#hexcasting:eval)$(action)Hermes' Gambit/$ if the next iota from the top of the stack is $(l:patterns/logic#hexcasting:bool_coerce)$(thing)considered $(action)True $(thing)by Nature/$.",
         false_eval: "Casts a pattern or list of patterns like $(l:patterns/meta#hexcasting:eval)$(action)Hermes' Gambit/$ if the next iota from the top of the stack is $(l:patterns/logic#hexcasting:bool_coerce)$(thing)considered $(action)False $(thing)by Nature/$.",
         null_eval: "If the first argument is not $(l:casting/influences)$(thing)Null/$, returns it. Otherwise, executes the second argument, much like $(l:patterns/meta#hexcasting:eval)$(action)Hermes' Gambit/$.",
-        mask_for_each: "Ok how do I explain this.",
+        mask_for_each: {
+          "": "A family of patterns similar to $(l:patterns/meta#hexcasting:for_each)$(action)Thoth's Gambit/$. However, instead of just taking in $(o)n/$ iotas of context, spaces can be added to skip iotas.",
+          details: "The first pattern is identical to Thoth's Gambit: 0.$(br2)The second is <-<. The first and third iotas will be taken as context, leaving the second behind.$(br2)The third is <<--<.$(br2)The fourth is <<-<--<<-."
+        },
         indexed_for_each: "A family of patterns similar to $(l:patterns/hextrapats_meta#hextrapats:mask_for_each)$(action)Thoth's Gambit II/$. Additionally pushes the data value's index after pushing the value onto each sub-stack.",
         stack_for_each: "Pops an evaluatable iota and a data list, then casts the evaluatable over each element of the first list. Unlike $(l:patterns/meta#hexcasting:for_each)$(action)Thoth's Gambit/$, everything is performed on the main stack and no list is created at the end. For each data value, it will simply push the value, then cast the evaluatable iota.",
         stack_indexed_for_each: "Like $(l:patterns/hextrapats_meta#hextrapats:stack_for_each)$(action)Anubis' Gambit/$, but also pushes the data value's index after pushing each value onto the stack."

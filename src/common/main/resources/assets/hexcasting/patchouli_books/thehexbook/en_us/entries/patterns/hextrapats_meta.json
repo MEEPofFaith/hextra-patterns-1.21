@@ -47,6 +47,9 @@
       "text": "hextrapats.page.meta.null_eval"
     },
     {
+      "type": "patchouli:empty"
+    },
+    {
       "type": "hexcasting:manual_pattern",
       "op_id": "hextrapats:mask_for_each",
       "anchor": "hextrapats:mask_for_each",
@@ -71,6 +74,10 @@
           "signature": "awaaddwdaadwdawwaddaw"
         }
       ]
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hextrapats.page.meta.mask_for_each.details"
     },
     {
       "type": "hexcasting:manual_pattern",
