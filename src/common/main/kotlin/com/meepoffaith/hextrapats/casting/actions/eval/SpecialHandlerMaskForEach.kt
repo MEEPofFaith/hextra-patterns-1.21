@@ -69,14 +69,12 @@ class SpecialHandlerMaskForEach(val mask: BooleanList) : SpecialHandler {
     companion object{
         @JvmField
         val PREFIX = "awaaddw"
-    }
 
-    class Factory : SpecialHandler.Factory<SpecialHandlerMaskForEach> {
-        override fun tryMatch(pat: HexPattern, env: CastingEnvironment): SpecialHandlerMaskForEach? {
+        fun createMask(prefix: String, pat: HexPattern): BooleanArrayList? {
             val sig = pat.anglesSignature()
-            if (!sig.startsWith(PREFIX)) return null
+            if (!sig.startsWith(prefix)) return null
 
-            val tail = sig.substring(PREFIX.length)
+            val tail = sig.substring(prefix.length)
             val mask = BooleanArrayList()
 
             var side = true
@@ -97,6 +95,14 @@ class SpecialHandlerMaskForEach(val mask: BooleanList) : SpecialHandler {
                 }
                 index++
             }
+
+            return mask
+        }
+    }
+
+    class Factory : SpecialHandler.Factory<SpecialHandlerMaskForEach> {
+        override fun tryMatch(pat: HexPattern, env: CastingEnvironment): SpecialHandlerMaskForEach? {
+            val mask = createMask(PREFIX, pat) ?: return null
 
             return SpecialHandlerMaskForEach(mask)
         }
