@@ -314,6 +314,7 @@
         true_eval: "Helios' Gambit",
         false_eval: "Selene's Gambit",
         null_eval: "Coalescing Gambit",
+        mask_for_each: "Thoth's Gambit II",
         indexed_for_each: "Djehuty's Gambit",
         stack_for_each: "Anubis' Gambit",
         stack_indexed_for_each: "Ra's Gambit",
@@ -375,6 +376,7 @@
         swizzle: "Swizzling Purification: %s%s%s"
       },
       scientific_exp: "Scientific Purification: 10^%s",
+      mask_for_each: "Thoth's Gambit II: %s",
       indexed_for_each: "Djehuty's Gambit: %s",
       duplicate_at: "Angler's Gambit: %s"
     },

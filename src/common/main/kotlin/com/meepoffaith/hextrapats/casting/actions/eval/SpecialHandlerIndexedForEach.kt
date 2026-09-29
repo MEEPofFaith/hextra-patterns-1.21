@@ -64,7 +64,7 @@ class SpecialHandlerIndexedForEach(val n: Int) : SpecialHandler {
             val sig = pat.anglesSignature()
             if (!sig.startsWith(PREFIX)) return null
 
-            val tail = sig.substring(9)
+            val tail = sig.substring(PREFIX.length)
             if (tail.length % 2 != 0) return null
 
             for ((index, segment) in tail.chunked(2).withIndex()) {

@@ -28,15 +28,7 @@ class SpecialHandlerMaskForEach(val mask: BooleanList) : SpecialHandler {
     }
 
     override fun getName(): Component {
-        var side = false
-        val fingerprint = mask.map {
-            if(it) {
-                '-'
-            }else {
-                side = !side
-                if (side) 'v' else '^'
-            }
-        }.joinToString("")
+        val fingerprint = mask.map { if(it) '<' else '-' }.joinToString("")
         return HextraUtils.specialHandlerLang(HextraSpecialHandlers.MASK_FOR_EACH)
             .asTranslatedComponent(fingerprint).lightPurple
     }
@@ -76,7 +68,7 @@ class SpecialHandlerMaskForEach(val mask: BooleanList) : SpecialHandler {
 
     companion object{
         @JvmField
-        val PREFIX = "dawaaddw"
+        val PREFIX = "awaaddw"
     }
 
     class Factory : SpecialHandler.Factory<SpecialHandlerMaskForEach> {
@@ -84,7 +76,7 @@ class SpecialHandlerMaskForEach(val mask: BooleanList) : SpecialHandler {
             val sig = pat.anglesSignature()
             if (!sig.startsWith(PREFIX)) return null
 
-            val tail = sig.substring(8)
+            val tail = sig.substring(PREFIX.length)
             val mask = BooleanArrayList()
 
             var side = true
