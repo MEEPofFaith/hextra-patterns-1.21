@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.casting.castables.SpecialHandler
 import at.petrak.hexcasting.common.lib.HexRegistries
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import com.meepoffaith.hextrapats.casting.actions.eval.SpecialHandlerIndexedForEach
+import com.meepoffaith.hextrapats.casting.actions.eval.SpecialHandlerMaskForEach
 import com.meepoffaith.hextrapats.casting.handlers.*
 
 object HextraSpecialHandlers : HextrapatsRegistrar<SpecialHandler.Factory<*>>(
@@ -15,6 +16,7 @@ object HextraSpecialHandlers : HextrapatsRegistrar<SpecialHandler.Factory<*>>(
     val VEC_Z = make("vec_z", SpecialHandlerVectorZ.Factory())
     val VEC_1 = make("vec_1", SpecialHandlerVector1.Factory())
     val SCI_EXP = make("scientific_exp", SpecialHandlerScientificExponent.Factory())
+    val MASK_FOR_EACH = make("mask_for_each", SpecialHandlerMaskForEach.Factory())
     val INDEXED_FOR_EACH = make("indexed_for_each", SpecialHandlerIndexedForEach.Factory())
     val DUPLICATE_AT = make("duplicate_at", SpecialHandlerDuplicateAt.Factory())
     val VEC_SWIZZLE = make("vec/swizzle", SpecialHandlerVecSwizzling.Factory())

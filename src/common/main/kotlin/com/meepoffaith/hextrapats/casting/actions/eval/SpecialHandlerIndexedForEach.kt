@@ -54,10 +54,15 @@ class SpecialHandlerIndexedForEach(val n: Int) : SpecialHandler {
         }
     }
 
+    companion object{
+        @JvmField
+        val PREFIX = "aaqwaaddw"
+    }
+
     class Factory : SpecialHandler.Factory<SpecialHandlerIndexedForEach> {
         override fun tryMatch(pat: HexPattern, env: CastingEnvironment): SpecialHandlerIndexedForEach? {
             val sig = pat.anglesSignature()
-            if (!sig.startsWith("aaqwaaddw")) return null
+            if (!sig.startsWith(PREFIX)) return null
 
             val tail = sig.substring(9)
             if (tail.length % 2 != 0) return null
