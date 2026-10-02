@@ -176,7 +176,7 @@
         null_eval: "If the first argument is not $(l:casting/influences)$(thing)Null/$, returns it. Otherwise, executes the second argument, much like $(l:patterns/meta#hexcasting:eval)$(action)Hermes' Gambit/$.",
         mask_for_each: {
           "": "A family of patterns similar to $(l:patterns/meta#hexcasting:for_each)$(action)Thoth's Gambit/$. However, instead of just taking in $(o)n/$ iotas of context, spaces can be added to skip iotas.",
-          details: "The first pattern is identical to Thoth's Gambit: 0.$(br2)The second is <-<. The first and third iotas will be taken as context, leaving the second behind.$(br2)The third is <<--<.$(br2)The fourth is <<-<--<<-."
+          details: "The first pattern is identical to Thoth's Gambit: 0.$(br2)The second is <-<<. The first, third, and fourth iotas will be taken as context, leaving the second behind.$(br2)The third is <<-<--, which skips the third, fifth, and sixth iotas."
         },
         indexed_for_each: "A family of patterns similar to $(l:patterns/hextrapats_meta#hextrapats:mask_for_each)$(action)Thoth's Gambit II/$. Additionally pushes the data value's index after pushing the value onto each sub-stack.",
         stack_for_each: "Pops an evaluatable iota and a data list, then casts the evaluatable over each element of the first list. Unlike $(l:patterns/meta#hexcasting:for_each)$(action)Thoth's Gambit/$, everything is performed on the main stack and no list is created at the end. For each data value, it will simply push the value, then cast the evaluatable iota.",
