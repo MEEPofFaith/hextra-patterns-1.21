@@ -12,6 +12,7 @@
     "hextrapats_nulls.title": "Null 转换",
     "hextrapats_stackmanip.title": "咒法新增：栈操作",
     "hextrapats_vecmanip.title": "向量操作",
+    "hextrapats_basics.title": "咒法新增：基础图案",
   },
   hextrapats: {
     page: {
@@ -72,9 +73,11 @@
           int: "将数舍入至最近的整数。传入向量时分别舍入各分量。",
           exact: "将第一个数舍入至最近的第二个数的倍数。传入向量时分别舍入各分量。",
         },
+        min: "若传入两个数，返回其中较小的。<br>若传入两个向量，返回其中较短的。",
+        max: "若传入两个数，返回其中较大的。<br>若传入两个向量，返回其中较长的。",
       },
       vec_math: {
-        normalize: "将向量的长度变为 1。",
+        normalize: "将向量的长度变为 1。零向量不变。",
         increment: "令长度增加 1。对 (0, 0, 0) 无效。",
         decrement: "令强度减少 1。对 (0, 0, 0) 无效。",
         rand_vec: "返回朝向随机方向的单位向量。",
@@ -85,8 +88,8 @@
           "": "将第一个向量向第二个向量旋转给定弧度。若两向量方向正好相反，则会招致事故。",
           examples: "例如：$(li)(1, 0, 0), (0, 1, 0), π/4$(br)   → (0.71, 0.71, 0)$(li)(2, 0, 0), (0, 5, 0), π/4$(br)   → (1.41, 1.41, 0)$(li)(1, 1, 1), (0, 5, 5), π/6$(br)   → (0.16, 1.22, 1.22)",
         },
-        from_polar: "以俯仰和偏航两个极坐标角生成单位向量，均以弧度计。+Y 对应上方。偏航角为 0 对应 +Z，为 π/2 对应 -X。相关文献又提到了所谓的 $(thing)F3/$。",
-        to_polar: "将向量的方向转换为俯仰和偏航两个极坐标角，均以弧度计。+Y 对应上方。偏航角为 0 对应 +Z，为 π/2 对应 -X。相关文献又提到了所谓的 $(thing)F3/$。",
+        from_polar: "以俯仰和偏航两个极坐标角生成单位向量，均以弧度计。+Y 对应上方。偏航角为 0 对应 +Z，为 π/2 对应 -X。相关文献又提到了所谓的 $(l:patterns/hextrapats_basics#hextrapats:entity/look.yaw)$(action)F3/$。",
+        to_polar: "将向量的方向转换为俯仰和偏航两个极坐标角，均以弧度计。+Y 对应上方。偏航角为 0 对应 +Z，为 π/2 对应 -X。相关文献又提到了所谓的 $(l:patterns/hextrapats_basics#hextrapats:entity/look.yaw)$(action)F3/$。",
         "rot_about/": {
           x: "绕 X 轴将所给向量旋转所给弧度。",
           y: "绕 Y 轴将所给向量旋转所给弧度。",
@@ -94,9 +97,10 @@
         },
         "cons_about/": {
           x: "将弧度角变为单位向量。该向量的 X 分量为 0。0 弧度对应 +Z，π/4 弧度对应 +Y。",
-          y: "将弧度角变为单位向量。该向量的 Y 分量为 0。0 弧度对应 +Z，π/4 弧度对应 -X。我曾读到过某些文献提到某种叫 $(thing)F3/$ 的东西，但我还找不出它的意义。",
+          y: "将弧度角变为单位向量。该向量的 Y 分量为 0。0 弧度对应 +Z，π/4 弧度对应 -X。相关文献又提到了所谓的 $(l:patterns/hextrapats_basics#hextrapats:entity/look.yaw)$(action)F3/$。",
           z: "将弧度角变为单位向量。该向量的 Z 分量为 0。0 弧度对应 -X，π/4 弧度对应 +Y。",
         },
+        set_length: "设置向量的长度。零向量不变。",
       },
       vecmanip: {
         get: "返回向量的 X、Y 或 Z 分量。",
@@ -155,9 +159,13 @@
         true_eval: "若自然会将栈顶往下第二 iota $(l:patterns/logic#hexcasting:bool_coerce)$(thing)视作 $(action)True/$，则施放栈顶的图案或图案列表，与$(l:patterns/meta#hexcasting:eval)$(action)赫尔墨斯之策略/$类似。",
         false_eval: "若自然会将栈顶往下第二 iota $(l:patterns/logic#hexcasting:bool_coerce)$(thing)视作 $(action)False/$，则施放栈顶的图案或图案列表，与$(l:patterns/meta#hexcasting:eval)$(action)赫尔墨斯之策略/$类似。",
         null_eval: "若第一参数不是 $(l:casting/influences)$(thing)Null/$，原样返回。否则执行第二参数，执行形式与$(l:patterns/meta#hexcasting:eval)$(action)赫尔墨斯之策略/$类似。",
-        indexed_for_each: "与$(l:patterns/meta#hexcasting:for_each)$(action)托特之策略/$类似，但被遍历列表的各独立栈会额外将所选元素的下标压入栈顶。",
+        indexed_for_each: "与$(l:patterns/meta#hexcasting:hextrapats_meta#hextrapats:mask_for_each)$(action)托特之策略，第二型/$类似，但被遍历列表的各独立栈会额外将所选元素的下标压入栈顶。",
         stack_for_each: "与$(l:patterns/meta#hexcasting:for_each)$(action)托特之策略/$类似，但遍历会直接以主栈为运行环境，而非为各项单独复制新栈。",
         stack_indexed_for_each: "与$(l:patterns/hextrapats_meta#hextrapats:indexed_for_each)$(action)杰胡提之策略/$类似，但遍历会直接以主栈为运行环境，而非为各项单独复制新栈。",
+        mask_for_each: {
+          "": "一系列与$(l:patterns/meta#hexcasting:for_each)$(action)托特之策略/$类似的图案。不过它不只能取上下文中的 $(o)n/$ 个 iota，还能使用空格跳过 iota。",
+          details: "第一个图案与托特之策略：0 一致。$(br2)第二个图案为 <-<<。其中，第一、第三、第四个 iota 取为运行上下文，第二个则不取。$(br2)第三个图案为 <<-<--，即不取第三、第五、第六个 iota。",
+        },
       },
       stackmanip: {
         capsizing: "将栈顶元素移至栈底。",
@@ -167,6 +175,21 @@
         duplicate_at: {
           "": "以其头部长度为基准，并在原位复制栈顶元素下方第 N 个元素的一系列图案。副本会创建于原 iota 的上方。",
           details: "第一个图案和$(l:patterns/stackmanip#hexcasting:duplicate)$(action)双子之分解/$一致。$(br2)第二个图案的头部长度为 1，即会复制栈顶元素下方的第一个元素。[1, 0] 会变为 [1, 1, 0]。$(br2)第三个图案依此类推。[2, 1, 0] 会变为 [2, 2, 1, 0]。",
+        },
+      },
+      basic: {
+        "raycast/": {
+          outline: "与$(l:patterns/basics#hexcasting:raycast)$(action)弓箭手之馏化/$类似，但能识别到高草丛等不具备碰撞特性的方块。消耗极少量$(media)媒质/$。",
+          outaxis: "与$(l:patterns/basics#hexcasting:raycast/axis)$(action)建筑师之馏化/$类似，但能识别到高草丛等不具备碰撞特性的方块。消耗极少量$(media)媒质/$。",
+        },
+        "entity/": {
+          look: {
+            yaw: "将栈顶实体变为其视线方向的偏航角，以弧度计。我在部分文献中读到过某种叫 $(thing)F3/$ 的东西。似乎北对应 π，南对应 0，东为 -π/2，西为 π/2。",
+            pitch: "将栈顶实体变为其视线方向的俯仰角，以弧度计。向上为 π/2，向下为 -π/2。",
+          },
+          body: {
+            yaw: "将栈顶实体变为其身体朝向的偏航角，以弧度计。相关文献又提到了所谓的 $(l:patterns/hextrapats_basics#hextrapats:entity/look.yaw)$(action)F3/$。",
+          },
         },
       },
     },
@@ -224,6 +247,7 @@
             x: "坐标之馏化：X",
             y: "坐标之馏化：Y",
             z: "坐标之馏化：Z",
+            len: "长度之馏化",
           },
           swizzle: "重排之纯化",
         },
@@ -275,6 +299,22 @@
         dredging: "疏浚之策略",
         "dredging/copy": "疏浚之策略，第二型",
         duplicate_at: "渔夫之策略",
+        "raycast/": {
+          outline: "弓箭手之馏化，第二型",
+          outaxis: "建筑师之馏化，第二型",
+        },
+        "entity/": {
+          look: {
+            yaw: "六分仪之纯化",
+            pitch: "六分仪之纯化，第二型",
+          },
+          body: {
+            yaw: "六分仪之纯化，第三型",
+          },
+        },
+        min: "最小之馏化",
+        max: "最大之馏化",
+        mask_for_each: "托特之策略，第二型",
       },
       "book.hextrapats:": {
         haha_ha_one: "向量之精思，+1/-1型",
@@ -322,6 +362,7 @@
       scientific_exp: "科学记数之纯化：10^%s",
       indexed_for_each: "杰胡提之策略：%s",
       duplicate_at: "渔夫之策略：%s",
+      mask_for_each: "托特之策略，第二型：%s",
     },
     "iota.hextrapats:": {
       num_set: {
