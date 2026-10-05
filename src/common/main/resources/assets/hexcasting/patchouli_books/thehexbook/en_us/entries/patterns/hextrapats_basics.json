@@ -24,27 +24,23 @@
     },
     {
       "type": "hexcasting:pattern",
-      "op_id": "hextrapats:entity/look.yaw",
-      "anchor": "hextrapats:entity/look.yaw",
+      "op_id": "hextrapats:entity/look_angles",
+      "anchor": "hextrapats:entity/look_angles",
       "input": "entity",
-      "output": "number",
-      "text": "hextrapats.page.basic.entity/look.yaw"
+      "output": "number, number",
+      "text": "hextrapats.page.basic.entity/look.angles"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hextrapats.page.basic.entity/look.info"
     },
     {
       "type": "hexcasting:pattern",
-      "op_id": "hextrapats:entity/look.pitch",
-      "anchor": "hextrapats:entity/look.pitch",
+      "op_id": "hextrapats:entity/body_yaw",
+      "anchor": "hextrapats:entity/body_yaw",
       "input": "entity",
       "output": "number",
-      "text": "hextrapats.page.basic.entity/look.pitch"
-    },
-    {
-      "type": "hexcasting:pattern",
-      "op_id": "hextrapats:entity/body.yaw",
-      "anchor": "hextrapats:entity/body.yaw",
-      "input": "entity",
-      "output": "number",
-      "text": "hextrapats.page.basic.entity/body.yaw"
+      "text": "hextrapats.page.basic.entity/body_yaw"
     }
   ]
 }
