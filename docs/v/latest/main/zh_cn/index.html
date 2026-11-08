@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/MEEPofFaith/hextra-patterns-1.21/tree/a936a5f560ae3d88fdf2b619acb0701dd62f2583"
+      href="https://github.com/MEEPofFaith/hextra-patterns-1.21/tree/35758f4056b536a46ab9ed9f3314840408382927"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -381,9 +381,9 @@
       <p>Like <a href="https://hexcasting.hexxy.media/v/0.11.3/1.0/en_us#patterns/basics@hexcasting:raycast/axis"><span style="color: #fc77be">Architect&#39;s Distillation</span></a>, but is able to hit collisionless blocks like tall grass. Costs a negligible amount of <span style="color: #74b3f2">media</span>.</p>
   </div>
 <br />
-  <div id="patterns/hextrapats_basics@hextrapats:entity/look.yaw" class="">
-<h4 class="pattern-title">Sextant Purification (entity → number)<a
-    href="#patterns/hextrapats_basics@hextrapats:entity/look.yaw"
+  <div id="patterns/hextrapats_basics@hextrapats:entity/look_angles" class="">
+<h4 class="pattern-title">Sextant Purification (entity → number, number)<a
+    href="#patterns/hextrapats_basics@hextrapats:entity/look_angles"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -434,12 +434,14 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：waa</canvas>
   </details>
-      <p>Transforms an entity on the stack into the yaw of its looking direction in radians. I&#39;ve seen some texts mention something called <span style="color: #8d6acc">F3</span>. Seems like north is pi, south is 0, east is -pi/2, and west is pi/2</p>
+      <p>Transforms an entity on the stack into the pitch and yaw of its looking direction in radians.</p>
   </div>
 <br />
-  <div id="patterns/hextrapats_basics@hextrapats:entity/look.pitch" class="">
+    <p>I&#39;ve seen some texts mention something called <span style="color: #8d6acc">F3</span>.</p><p>For yaw, north is pi, south is 0, east is -pi/2, and west is pi/2.</p><p>For pitch, pi/2 is upwards is pi/2, and downwards is -pi/2.</p>
+<br />
+  <div id="patterns/hextrapats_basics@hextrapats:entity/body_yaw" class="">
 <h4 class="pattern-title">Sextant Purification II (entity → number)<a
-    href="#patterns/hextrapats_basics@hextrapats:entity/look.pitch"
+    href="#patterns/hextrapats_basics@hextrapats:entity/body_yaw"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -490,63 +492,7 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：wdd</canvas>
   </details>
-      <p>Transforms an entity on the stack into the pitch of its looking direction in radians. Upwards is pi/2, downwards is -pi/2</p>
-  </div>
-<br />
-  <div id="patterns/hextrapats_basics@hextrapats:entity/body.yaw" class="">
-<h4 class="pattern-title">Sextant Purification III (entity → number)<a
-    href="#patterns/hextrapats_basics@hextrapats:entity/body.yaw"
-    class="permalink small"
-    title="Permalink"
-  ><i class="bi bi-link-45deg"></i></a></h4>
-  <details class="details-collapsible">
-    <summary class="collapse-details collapse-spell"></summary>
-    <div class="dropdown spell-settings-dropdown">
-      <span
-        href=""
-        class="dropdown-toggle spell-settings-toggle"
-        data-toggle="dropdown"
-        role="button"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        <i class="bi bi-gear-fill"></i>
-      </span>
-      <ul class="dropdown-menu">
-        <li class="dropdown-submenu">
-          <a
-            href=""
-            class="dropdown-toggle"
-            data-toggle="dropdown"
-            role="button"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >渲染方式</a>
-          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
-        </li>
-        <li class="dropdown-submenu">
-          <a
-            href=""
-            class="dropdown-toggle"
-            data-toggle="dropdown"
-            role="button"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >配色</a>
-          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
-        </li>
-      </ul>
-    </div>
-      <canvas
-        class="spell-viz"
-        width="216"
-        height="216"
-        data-string="waaqa"
-        data-start="east"
-        data-per-world="False"
-      >浏览器不支持图案的可视化。图案代码见此：waaqa</canvas>
-  </details>
-      <p>Transforms an entity on the stack into the yaw of its body in radians. Yet again, mentions of <a href="#patterns/hextrapats_basics@hextrapats:entity/look.yaw"><span style="color: #fc77be">F3</span></a> turn up.</p>
+      <p>Transforms an entity on the stack into the yaw of its body in radians. Yet again, mentions of <a href="#patterns/hextrapats_basics@hextrapats:entity/look_angles"><span style="color: #fc77be">F3</span></a> turn up.</p>
   </div>
 <br />
 </div>
