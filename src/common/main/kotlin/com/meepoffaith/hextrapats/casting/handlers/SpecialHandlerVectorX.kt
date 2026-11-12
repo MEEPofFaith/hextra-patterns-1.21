@@ -34,7 +34,7 @@ class SpecialHandlerVectorX(val x: Double) : SpecialHandler{
 
     class Factory : SpecialHandler.Factory<SpecialHandlerVectorX>{
         override fun tryMatch(pattern: HexPattern, env: CastingEnvironment): SpecialHandlerVectorX? {
-            val sig = pattern.anglesSignature()
+            val sig = pattern.getSignature().toAnglesString()
             if(sig.startsWith("aeaqaa") || sig.startsWith("aqdedd")){
                 val num = numericalReflection(sig.substring(6)) *
                         (if (sig.startsWith("aqdedd")) -1.0 else 1.0)

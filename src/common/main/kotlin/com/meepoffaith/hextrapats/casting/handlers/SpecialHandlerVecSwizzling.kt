@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getVec3
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.math.HexAngle
+import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.utils.asTranslatedComponent
 import at.petrak.hexcasting.api.utils.lightPurple
@@ -57,46 +58,74 @@ class SpecialHandlerVecSwizzling(val swizzle: Int) : SpecialHandler{
 
     class Factory : SpecialHandler.Factory<SpecialHandlerVecSwizzling>{
         override fun tryMatch(pattern: HexPattern, env: CastingEnvironment): SpecialHandlerVecSwizzling? {
-            val sig = pattern.anglesSignature()
+
+            val sig = pattern.getSignature().toAnglesString()
+
             if(sig.startsWith("eeeeqaawddea")){
-                val directions = pattern.directions().drop(13)
-                val flatDir = pattern.startDir.rotatedBy(HexAngle.BACK) // Start is to the left. Flip over to the right.
+                return null
+                /*val directions = pattern.signature.drop(12)
+
+                println("Rotation test")
+                println(HexAngle.RIGHT.rotatedBy(HexAngle.RIGHT))
+                println(HexAngle.RIGHT.rotatedBy(HexAngle.RIGHT_BACK))
+                println(HexAngle.RIGHT.rotatedBy(HexAngle.BACK))
+                println(HexAngle.RIGHT.rotatedBy(HexAngle.LEFT_BACK))
+                println(HexAngle.RIGHT.rotatedBy(HexAngle.LEFT))
+                println(HexAngle.RIGHT.rotatedBy(HexAngle.FORWARD))
+                println("Rotation test done")
+
 
                 var vals = 0
                 var swizzle = 0
                 var i = 0;
+                var lastAngle = HexAngle.LEFT
                 while(i < directions.size){
                     // Pattern is too long! Already have the 3 vals.
+                    print("Last Angle ")
+                    println(lastAngle)
                     if(vals == 3) return null
-
+                    print("Current Angle ")
+                    println(directions[i])
                     // Angle with respect to the *start direction*
-                    val angle = directions[i].angleFrom(flatDir)
+                    val angle = directions[i].rotatedBy(lastAngle)
+
+                    print("angle ")
+                    println(angle)
                     if(angle == HexAngle.FORWARD){
+                        println("check1")
                         swizzle = (swizzle shl 2) or 0b01 // 01 -> y
                         vals++
                         i++
+                        lastAngle = angle
                         continue
                     }
 
                     // Out of angles to process!
                     if (i >= directions.size - 1) return null
 
-                    val angle2 = directions[i + 1].angleFrom(flatDir)
+                    val angle2 = directions[i + 1]
+                    print("angle2 ")
+                    println(angle2)
                     if(angle == HexAngle.LEFT && angle2 == HexAngle.RIGHT){
+                        println("check2")
                         swizzle = swizzle shl 2 // 00 -> x
                         vals++
                         i += 2
+                        lastAngle = angle2
                         continue
                     }
                     if(angle == HexAngle.RIGHT && angle2 == HexAngle.LEFT){
+                        println("check3")
                         swizzle = (swizzle shl 2) or 0b10 // 10 -> z
                         vals++
                         i += 2
+                        lastAngle = angle2
                         continue
                     }
                     return null
                 }
                 return if(vals == 3) SpecialHandlerVecSwizzling(swizzle) else null
+                */
             }
             return null
         }
