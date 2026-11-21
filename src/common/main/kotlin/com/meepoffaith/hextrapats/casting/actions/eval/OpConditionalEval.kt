@@ -20,7 +20,7 @@ class OpConditionalEval(val evalCond: Boolean) : Action {
         if(stack.size < 2) throw MishapNotEnoughArgs(2, stack.size)
 
         val instrs = stack.getEvaluatable(stack.lastIndex, stack.size)
-        val bool = stack[stack.lastIndex - 1].isTruthy
+        val bool = stack[stack.lastIndex - 1].isTruthy(env)
         stack = stack.dropRight(2)
 
         if(bool == evalCond){

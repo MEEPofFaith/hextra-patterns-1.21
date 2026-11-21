@@ -9,6 +9,6 @@ object OpNoConsBoolCoerce : ConstMediaAction {
     override val argc = 1
     override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
         val iota = args[0]
-        return listOf(iota, BooleanIota(iota.isTruthy))
+        return listOf(iota, BooleanIota(iota.isTruthy(env)))
     }
 }

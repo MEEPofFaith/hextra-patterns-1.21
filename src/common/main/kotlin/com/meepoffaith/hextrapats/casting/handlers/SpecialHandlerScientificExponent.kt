@@ -40,7 +40,7 @@ class SpecialHandlerScientificExponent(val exp: Int) : SpecialHandler{
 
     class Factory : SpecialHandler.Factory<SpecialHandlerScientificExponent> {
         override fun tryMatch(pattern: HexPattern, env: CastingEnvironment): SpecialHandlerScientificExponent? {
-            val sig = pattern.anglesSignature()
+            val sig = pattern.getSignature().toAnglesString()
             if(sig.startsWith("waqe") || sig.startsWith("wdeq")){
                 val divide = sig.startsWith("wdeq")
                 val chars = sig.substring(4).toCharArray()

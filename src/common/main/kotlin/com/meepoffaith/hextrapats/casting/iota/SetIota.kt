@@ -3,6 +3,7 @@ package com.meepoffaith.hextrapats.casting.iota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.utils.gold
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import com.meepoffaith.hextrapats.registry.HextraIotas
 import com.mojang.serialization.MapCodec
 import net.minecraft.network.RegistryFriendlyByteBuf
@@ -13,7 +14,7 @@ import net.minecraft.network.codec.StreamCodec
 class SetIota(val iotaSet: IotaSet): Iota({ HextraIotas.SET }) {
     constructor(iotaList: List<Iota>, argc: Int = 0) : this(IotaSet(iotaList, argc))
 
-    override fun isTruthy(): Boolean = iotaSet.isNotEmpty()
+    override fun isTruthy(env: CastingEnvironment?): Boolean = iotaSet.isNotEmpty()
 
     override fun toleratesOther(that: Iota?): Boolean =
         that is SetIota && that.iotaSet == iotaSet

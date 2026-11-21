@@ -33,7 +33,7 @@ class SpecialHandlerDuplicateAt(val depth: Int) : SpecialHandler {
 
     class Factory : SpecialHandler.Factory<SpecialHandlerDuplicateAt>{
         override fun tryMatch(pattern: HexPattern, env: CastingEnvironment): SpecialHandlerDuplicateAt? {
-            val sig = pattern.anglesSignature()
+            val sig = pattern.getSignature().toAnglesString()
             if(sig.endsWith("wddad")){
                 val chars = sig.substring(0, sig.length - 5).toCharArray()
                 for(c in chars){

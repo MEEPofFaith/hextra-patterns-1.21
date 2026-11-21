@@ -70,7 +70,7 @@ class SpecialHandlerMaskForEach(val mask: BooleanList) : SpecialHandler {
         val PREFIX = "awaaddw"
 
         fun createMask(prefix: String, pat: HexPattern): BooleanArrayList? {
-            val sig = pat.anglesSignature()
+            val sig = pat.getSignature().toAnglesString()
             if (!sig.startsWith(prefix)) return null
 
             val tail = sig.substring(prefix.length)

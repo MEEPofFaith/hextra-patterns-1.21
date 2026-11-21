@@ -132,11 +132,11 @@ object HextraActions : HextrapatsRegistrar<ActionRegistryEntry>(
         make(name, startDir, signature) { action }
 
     private fun make(name: String, startDir: HexDir, signature: String, getAction: () -> Action) = register(name) {
-        ActionRegistryEntry(HexPattern.fromAngles(signature, startDir), getAction())
+        ActionRegistryEntry(HexPattern.fromAngleString(signature, startDir), getAction())
     }
 
     private fun makeArithOp(name: String, startDir: HexDir, signature: String): HexPattern {
-        val pattern = HexPattern.fromAngles(signature, startDir)
+        val pattern = HexPattern.fromAngleString(signature, startDir)
         make(name, startDir, signature, OperationAction(pattern))
         return pattern
     }

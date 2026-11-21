@@ -16,7 +16,7 @@ class OpConditionalHalt(val haltCond: Boolean) : Action {
         continuation: SpellContinuation
     ): OperationResult {
         val stack = image.stack
-        val bool = (stack.removeLastOrNull() ?: throw MishapNotEnoughArgs(1, 0)).isTruthy
+        val bool = (stack.removeLastOrNull() ?: throw MishapNotEnoughArgs(1, 0)).isTruthy(env)
         var newStack = stack.init()
 
         //Copied from OpHalt
