@@ -31,10 +31,10 @@ class SpecialHandlerVecSwizzling(val swizzle: Int) : SpecialHandler{
             ).lightPurple
     }
 
-    fun getChar(bits: Int): Char = when(bits and 0b11){
-        0b00 -> 'X'
-        0b01 -> 'Y'
-        0b10 -> 'Z'
+    fun getChar(bits: Int): String = when(bits and 0b11){
+        0b00 -> "X"
+        0b01 -> "Y"
+        0b10 -> "Z"
         else -> throw IllegalStateException()
     }
 
@@ -60,72 +60,46 @@ class SpecialHandlerVecSwizzling(val swizzle: Int) : SpecialHandler{
         override fun tryMatch(pattern: HexPattern, env: CastingEnvironment): SpecialHandlerVecSwizzling? {
 
             val sig = pattern.getSignature().toAnglesString()
-
             if(sig.startsWith("eeeeqaawddea")){
-                return null
-                /*val directions = pattern.signature.drop(12)
-
-                println("Rotation test")
-                println(HexAngle.RIGHT.rotatedBy(HexAngle.RIGHT))
-                println(HexAngle.RIGHT.rotatedBy(HexAngle.RIGHT_BACK))
-                println(HexAngle.RIGHT.rotatedBy(HexAngle.BACK))
-                println(HexAngle.RIGHT.rotatedBy(HexAngle.LEFT_BACK))
-                println(HexAngle.RIGHT.rotatedBy(HexAngle.LEFT))
-                println(HexAngle.RIGHT.rotatedBy(HexAngle.FORWARD))
-                println("Rotation test done")
-
+                val directions = pattern.signature.drop(12).iterator()
+                var lastDir = HexAngle.RIGHT.inverse()
 
                 var vals = 0
                 var swizzle = 0
-                var i = 0;
-                var lastAngle = HexAngle.LEFT
-                while(i < directions.size){
+                while(directions.hasNext()){
                     // Pattern is too long! Already have the 3 vals.
-                    print("Last Angle ")
-                    println(lastAngle)
                     if(vals == 3) return null
-                    print("Current Angle ")
-                    println(directions[i])
-                    // Angle with respect to the *start direction*
-                    val angle = directions[i].rotatedBy(lastAngle)
 
-                    print("angle ")
+                    // Angle with respect to the last direction
+                    val angle = directions.next().rotatedBy(lastDir)
                     println(angle)
+
                     if(angle == HexAngle.FORWARD){
-                        println("check1")
                         swizzle = (swizzle shl 2) or 0b01 // 01 -> y
                         vals++
-                        i++
-                        lastAngle = angle
+                        lastDir = HexAngle.FORWARD
                         continue
                     }
 
                     // Out of angles to process!
-                    if (i >= directions.size - 1) return null
+                    if (!directions.hasNext()) return null
 
-                    val angle2 = directions[i + 1]
-                    print("angle2 ")
-                    println(angle2)
-                    if(angle == HexAngle.LEFT && angle2 == HexAngle.RIGHT){
-                        println("check2")
+                    val angle2 = directions.next()
+                    if(angle == HexAngle.LEFT && angle2 == HexAngle.RIGHT_BACK){
                         swizzle = swizzle shl 2 // 00 -> x
                         vals++
-                        i += 2
-                        lastAngle = angle2
+                        lastDir = HexAngle.LEFT.inverse()
                         continue
                     }
-                    if(angle == HexAngle.RIGHT && angle2 == HexAngle.LEFT){
-                        println("check3")
+                    if(angle == HexAngle.RIGHT && angle2 == HexAngle.LEFT_BACK){
                         swizzle = (swizzle shl 2) or 0b10 // 10 -> z
                         vals++
-                        i += 2
-                        lastAngle = angle2
+                        lastDir = HexAngle.RIGHT.inverse()
                         continue
                     }
                     return null
                 }
                 return if(vals == 3) SpecialHandlerVecSwizzling(swizzle) else null
-                */
             }
             return null
         }
