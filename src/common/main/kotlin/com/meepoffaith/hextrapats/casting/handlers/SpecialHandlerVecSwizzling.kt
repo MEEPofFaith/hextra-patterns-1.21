@@ -72,7 +72,6 @@ class SpecialHandlerVecSwizzling(val swizzle: Int) : SpecialHandler{
 
                     // Angle with respect to the last direction
                     val angle = directions.next().rotatedBy(lastDir)
-                    println(angle)
 
                     if(angle == HexAngle.FORWARD){
                         swizzle = (swizzle shl 2) or 0b01 // 01 -> y
